@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* to remove the top and left whitespace */
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+/* just to be sure these are full screen*/
+
+canvas {
+    display: block;
+  border: none;
+background-color: #7583A6;
+}
+.box p{
+    display: block;
+    font-size: 50px;
+    margin: 5px;
+    color:white;
+
+}
+.ref{
+    height: 80px;
+    width: 80px;
+    border-radius: 50px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(-30px,630px);
+
+
+}
+
+.select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 5px;
+
+
+}
+
+.select_options{
+    background-color: #79BBFF;
+    border: #1564ad ;
+    border-radius: 50px;
+    height: 50px;
+    width: 400px;
+    color:black;
+    font-family:Arial;
+    font-size:17px;
+    font-weight: 600;
+    outline:none;
+
+}
+.box{
+    box-sizing: border-box;
+    background-color: #515B73;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+    color: white;
+    outline:none;
+}
+a:hover{
+    cursor: pointer;
+
+}
+a:active{
+    outline:none;
+}
+button {
+    height: 50px;
+    width: 130px;
+    color: white;
+    border-radius: 50px;
+    background-color: #1564ad;
+    border: #1564ad;
+    font-family:Arial;
+    font-size:17px;
+    font-weight:bold;
+    outline:none;
+    transition: 0.5s;
+    border: 1px solid dimgrey;
+    margin-left: 5px;
+}
+button:hover {
+cursor: pointer;
+    color: black;
+    background-color: #AABFF2;
+    transition: 0.4s;
+}
