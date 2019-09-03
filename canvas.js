@@ -24,6 +24,8 @@
 
 
 
+
+window.addEventListener('resize', resizeCanvas, false);
 var select = document.querySelector(".select_options");
 var canvas = document.querySelector("canvas");
 var button = document.querySelector("button");
@@ -45,9 +47,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+function resizeCanvas() {
+    canvas.width = window.innerWidth-14.05;
+    canvas.height = window.innerHeight;
+    var w=canvas.width/1299;
+    var h=canvas.height/637;
+
+    /**
+     * Your drawings need to be inside this function otherwise they will be reset when
+     * you resize the browser window and the canvas goes will be cleared.
+     */
 var arrnames=[];
 console.log("");
 //od 0 do 4
+
 var ShopsLeft = [
     {
         name: "Empik",
@@ -283,54 +296,54 @@ var c = canvas.getContext('2d');
 for (var i = 0; i < 5; i++) {
     // c.beginPath()
     c.fillStyle = "#628CF2"
-    c.rect(0, i * 100, 200, 100);
+    c.rect(0*w, i * 100*h, 200*w, 100*h);
     c.fill();
 
 //    c.beginPath();
-    c.moveTo(200,0 +i * 100);
-    c.lineTo(220,35+ i * 100);
-    c.lineTo(220,135+ i * 100);
-    c.lineTo(200,100 + i * 100);
-    c.lineTo(200,0 + i * 100);
+    c.moveTo(200*w,(0 +i * 100)*h);
+    c.lineTo(220*w,(35+ i * 100)*h);
+    c.lineTo(220*w,(135+ i * 100)*h);
+    c.lineTo(200*w,(100 + i * 100)*h);
+    c.lineTo(200*w,(0 + i * 100)*h);
     c.fill();
 
-    c.moveTo(0,500);
-    c.lineTo(0,535);
-    c.lineTo(220,535);
-    c.lineTo(200,500);
-    c.lineTo(0,500);
+    c.moveTo(0*w,500*h);
+    c.lineTo(0*w,535*h);
+    c.lineTo(220*w,535*h);
+    c.lineTo(200*w,500*h);
+    c.lineTo(0*w,500*h);
     c.fill();
 }
 //srodek lewo
 for (var i = 0; i < 4; i++) {
-    c.rect(450, 100 + i * 100, 200, 100);
+    c.rect(450*w, (100 + i * 100)*h, 200*w, 100*h);
     c.stroke();
 }
 //srodek prawo
 for (var i = 0; i < 4; i++) {
-    c.rect(650, 100 + i * 100, 200, 100);
+    c.rect(650*w, (100 + i * 100)*h, 200*w, 100*h);
     c.stroke();
 }
 //prawo
 for (var i = 0; i < 5; i++) {
     c.fillStyle = "#628CF2"
-    c.rect(1100, i * 100, 200, 100);
+    c.rect(1100*w, i * 100*h, 200*w, 100*h);
     c.fill();
 
 
     // //3d
-    c.moveTo(1100,0 +i * 100);
-    c.lineTo(1080,35+ i * 100);
-    c.lineTo(1080,135+ i * 100);
-    c.lineTo(1100,100 + i * 100);
-    c.lineTo(1100,0 + i * 100);
+    c.moveTo(1100*w,(0 +i * 100)*h);
+    c.lineTo(1080*w,(35+ i * 100)*h);
+    c.lineTo(1080*w,(135+ i * 100)*h);
+    c.lineTo(1100*w,(100 + i * 100)*h);
+    c.lineTo(1100*w,(0 + i * 100)*h);
     c.fill();
 
-    c.moveTo(1300,500);
-    c.lineTo(1300,535);
-    c.lineTo(1080,535);
-    c.lineTo(1100,500);
-    c.lineTo(1300,500);
+    c.moveTo(1300*w,500*h);
+    c.lineTo(1300*w,535*h);
+    c.lineTo(1080*w,535*h);
+    c.lineTo(1100*w,500*h);
+    c.lineTo(1300*w,500*h);
     c.stroke();
 
 
@@ -344,8 +357,8 @@ for (var i = 0; i < 5; i++) {
 
 //lewe wejscie
 c.beginPath();
-c.moveTo(600, 640);
-c.lineTo(600, 590);
+c.moveTo(600*w, 640*h);
+c.lineTo(600*w, 590*h);
 c.stroke();
 
 
@@ -353,8 +366,8 @@ c.stroke();
 
 //prawe wejscie
 c.beginPath();
-c.moveTo(700, 640);
-c.lineTo(700, 590);
+c.moveTo(700*w, 640*h);
+c.lineTo(700*w, 590*h);
 c.stroke();
 
 
@@ -362,14 +375,14 @@ function make_base(possx,possy) {
     base_image = new Image();
     base_image.src = './gps.png';
     base_image.onload = function () {
-        c.drawImage(base_image, possx -30, possy-60 ,60,60);
+        c.drawImage(base_image, (possx-30), (possy-60) ,60*w,60*h);
     }
 }
 function user() {
     base_image = new Image();
     base_image.src = './user.png';
     base_image.onload = function () {
-        c.drawImage(base_image, 610, 565 ,80,80);
+        c.drawImage(base_image, 610*w, 565*h ,80*w,80*h);
     }
 }function logo(srcc,xxx,yyy) {
     base_imagee = new Image();
@@ -390,15 +403,15 @@ var Shops = document.querySelector(".select_options").options;
 button.addEventListener('click', function (e) {
     e.preventDefault();
     var chosenShop = document.querySelector(".select_options").selectedIndex;
-    var ex = 650;
-    var o = 640;
-    var p = 545;
+    var ex = 650*w;
+    var o = 640*h;
+    var p = 545*h;
     var photos = Shops[chosenShop].dataset.photo;
-    var choseny = Number(Shops[chosenShop].dataset.y) + 30;
-    var chosenx = Number(Shops[chosenShop].dataset.x);
-    var speed = 5;
+    var choseny = (Number(Shops[chosenShop].dataset.y) + 30)*h;
+    var chosenx = (Number(Shops[chosenShop].dataset.x))*w;
+    var speed = 5*w;
 setTimeout(function() {
-     if (Shops[chosenShop].dataset.x <410  && Shops[chosenShop].dataset.x > 200) {
+     if (Shops[chosenShop].dataset.x <410*w  && Shops[chosenShop].dataset.x > 200*w) {
          console.log(photos);
 
          make_base(chosenx, choseny);
@@ -410,18 +423,18 @@ setTimeout(function() {
 
              myReq = requestAnimationFrame(animate);
 //pierwsza linia
-             c.lineWidth = 10;
+             c.lineWidth = 10*w;
              c.strokeStyle = "red";
              c.beginPath();
-             c.moveTo(650, 640);
-             c.lineTo(650, o);//545
-             if (o > 545) {
+             c.moveTo(650*w, 640*h);
+             c.lineTo(650*w, o);//545
+             if (o > 545*h) {
                  o -= speed;
              }
              //druga
 
-             if (o <= 545) {
-                 c.lineTo(ex, 545);//252.5
+             if (o <= 545*h) {
+                 c.lineTo(ex, 545*h);//252.5
                  if (ex > chosenx) {
 
                      ex -= speed;
@@ -436,8 +449,10 @@ setTimeout(function() {
                  }
 
              }
-             //c.globalCompositeOperation='destination-over';
-             logo(photos,chosenx-100,choseny)
+             //c.globalCompositeOperation='destination-
+
+             //zdjecia
+             //logo(photos,chosenx-100,choseny)
 
 
              c.stroke();
@@ -453,18 +468,18 @@ setTimeout(function() {
 
             myReq = requestAnimationFrame(animate);
 //pierwsza linia
-            c.lineWidth = 10;
+            c.lineWidth = 10*w;
             c.strokeStyle = "red";
             c.beginPath();
-            c.moveTo(650, 640);
-            c.lineTo(650, o);//545
-            if (o > 545) {
+            c.moveTo(650*w, 640*h);
+            c.lineTo(650*w, o);//545
+            if (o > 545*h) {
                 o -= speed;
             }
             //druga
 
-            if (o <= 545) {
-                c.lineTo(ex, 545);//252.5
+            if (o <= 545*h) {
+                c.lineTo(ex, 545*h);//252.5
                 if (ex < chosenx) {
 
                     ex += speed;
@@ -501,7 +516,7 @@ setTimeout(function() {
 
 c.font = "30px Arial";
 c.fillStyle = "white";
-c.fillText("TU JESTEŚ", 700, 610);
+c.fillText("TU JESTEŚ", 700*w, 610*h);
 
 
 // c.beginPath();
@@ -511,3 +526,6 @@ c.fillText("TU JESTEŚ", 700, 610);
 // c.fill();
 c.globalCompositeOperation='destination-over';
 user()
+
+}
+resizeCanvas()

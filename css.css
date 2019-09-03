@@ -17,6 +17,7 @@ canvas {
     display: block;
   border: none;
 background-color: #7583A6;
+
 }
 .box p{
     display: block;
@@ -33,10 +34,10 @@ background-color: #7583A6;
     display: flex;
     justify-content: center;
     align-items: center;
-   position: absolute;
+    position: absolute;
     bottom: 0;
     right: 0;
-    transform: translate(-30px,630px);
+
 
 
 }
